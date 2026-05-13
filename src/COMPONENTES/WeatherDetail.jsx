@@ -22,7 +22,9 @@ export default function WeatherDetail() {
 
     try {
 
-      const respuesta = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=auto`
+      const respuesta = await axios.get(
+
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature&daily=temperature_2m_max,temperature_2m_min&timezone=auto`
 
       )
 
@@ -38,7 +40,9 @@ export default function WeatherDetail() {
   }
 
   if (!clima) {
+
     return <h2>Cargando...</h2>
+
   }
 
   return (

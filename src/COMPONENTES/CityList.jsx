@@ -19,7 +19,10 @@ export default function CityList() {
       {
         ciudades.map((c, index) => (
 
-          <div key={index} className="cityItem">
+          <div
+            key={index}
+            className="cityItem"
+          >
 
             <p>{c.display_name}</p>
 
