@@ -13,28 +13,19 @@ export default function SearchBar() {
   const buscarCiudad = async () => {
 
     if (ciudad.trim() === "") {
-
       alert("Ingrese una ciudad")
-
       return
     }
 
     try {
 
-      const respuesta = await axios.get(
-
-        `https://nominatim.openstreetmap.org/search?q=${ciudad}&format=json`
-
+      const respuesta = await axios.get(`https://nominatim.openstreetmap.org/search?q=${ciudad}&format=json`
       )
 
       navigate("/cities", {
-
         state: {
-
           ciudades: respuesta.data
-
         }
-
       })
 
     } catch (error) {
@@ -50,13 +41,13 @@ export default function SearchBar() {
 
     <div className="card">
 
-      <h1>🌤 Aplicación del Clima</h1>
+      <h1>🌤️ Aplicación del Clima</h1>
 
       <p>Buscá una ciudad</p>
 
       <input
         type="text"
-        placeholder="Ej: Córdoba"
+        placeholder="Ej: Buenos Aires"
         value={ciudad}
         onChange={(e) => setCiudad(e.target.value)}
       />

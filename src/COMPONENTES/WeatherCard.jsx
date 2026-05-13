@@ -8,9 +8,9 @@ export default function WeatherCard({ fecha, max, min }) {
 
       <h3>{fecha}</h3>
 
-      <p>🌡 Max: {max}°C</p>
+      <p>🌡️ Max: {max}°C</p>
 
-      <p>❄ Min: {min}°C</p>
+      <p>❄️ Min: {min}°C</p>
 
     </div>
 
