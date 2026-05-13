@@ -47,7 +47,7 @@ export default function SearchBar() {
 
       <input
         type="text"
-        placeholder="Ej: Buenos Aires"
+        placeholder="Ej: San Francisco"
         value={ciudad}
         onChange={(e) => setCiudad(e.target.value)}
       />
