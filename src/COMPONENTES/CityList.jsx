@@ -14,6 +14,10 @@ export default function CityList() {
 
     <div className="card">
 
+      <button onClick={() => navigate("/")}>
+        Nueva búsqueda
+      </button>
+
       <h2>Ciudades encontradas</h2>
 
       {
