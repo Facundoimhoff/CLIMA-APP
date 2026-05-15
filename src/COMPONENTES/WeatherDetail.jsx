@@ -38,13 +38,13 @@ export default function WeatherDetail() {
 
       setClima(respuesta.data)
 
-      setLoading(false)
-
     } catch (error) {
 
       console.log(error)
 
       setError("No se pudo obtener el clima")
+
+    } finally {
 
       setLoading(false)
 
@@ -53,36 +53,78 @@ export default function WeatherDetail() {
 
   const obtenerIconoClima = (codigo) => {
 
-  codigo = Number(codigo)
+    codigo = Number(codigo)
 
-  if (codigo === 0) return "☀️ DESPEJADO"
+    if (codigo === 0) {
+      return "☀️ DESPEJADO"
+    }
 
-  if (codigo === 1) return "🌤️ MAYORMENTE DESPEJADO"
+    if (codigo === 1) {
+      return "🌤️ MAYORMENTE DESPEJADO"
+    }
 
-  if (codigo === 2) return "⛅ PARCIALMENTE NUBLADO"
+    if (codigo === 2) {
+      return "⛅ PARCIALMENTE NUBLADO"
+    }
 
-  if (codigo === 3) return "☁️ NUBLADO"
+    if (codigo === 3) {
+      return "☁️ NUBLADO"
+    }
 
-  if (codigo >= 45 && codigo <= 48) return "🌫️ NIEBLA"
+    if (codigo === 45) {
+      return "🌫️ NIEBLA"
+    }
 
-  if (codigo >= 51 && codigo <= 67) return "🌧️ LLUVIA"
+    if (codigo === 51) {
+      return "🌦️ LLOVIZNA LEVE"
+    }
 
-  if (codigo >= 71 && codigo <= 77) return "❄️ NIEVE"
+    if (codigo === 53) {
+      return "🌦️ LLOVIZNA MODERADA"
+    }
 
-  if (codigo >= 80 && codigo <= 82) return "🌦️ CHUBASCOS LEVES"
+    if (codigo === 55) {
+      return "🌧️ LLOVIZNA INTENSA"
+    }
 
-  if (codigo >= 95) return "⛈️ TORMENTA"
+    if (codigo >= 71 && codigo <= 77) {
+      return "❄️ NIEVE"
+    }
 
-  return "🌍 DESCONOCIDO"
+    if (codigo === 95) {
+      return "⛈️ TORMENTA"
+    }
 
-}
+    if (codigo === 96) {
+      return "⛈️ TORMENTA CON GRANIZO"
+    }
+
+    return "🌍 CLIMA DESCONOCIDO"
+
+  }
+
+  const obtenerEmojiSensacion = (temperatura) => {
+
+    if (temperatura >= 30) return "🥵"
+
+    if (temperatura >= 20) return "😎"
+
+    if (temperatura >= 10) return "🙂"
+
+    return "🥶"
+
+  }
 
   if (loading) {
+
     return <h2>Cargando...</h2>
+
   }
 
   if (error) {
+
     return <h2>{error}</h2>
+
   }
 
   return (
@@ -95,20 +137,29 @@ export default function WeatherDetail() {
 
       <h1>
         {obtenerIconoClima(clima.current.weather_code)}
-        {" "}
       </h1>
 
-      <p>🌡️ Temperatura: {clima.current.temperature_2m}°C</p>
-
-      <p>💧 Humedad: {clima.current.relative_humidity_2m}%</p>
+      <p>
+        🌡️ Temperatura:
+        {" "}
+        {clima.current.temperature_2m}°C
+      </p>
 
       <p>
+        💧 Humedad:
+        {" "}
+        {clima.current.relative_humidity_2m}%
+      </p>
+
+      <p>
+        {obtenerEmojiSensacion(clima.current.apparent_temperature)}
+        {" "}
         Sensación térmica:
         {" "}
         {clima.current.apparent_temperature}°C
       </p>
 
-      <h2>Pronóstico</h2>
+      <h2>Pronóstico de 7 días</h2>
 
       <div className="forecastContainer">
 
