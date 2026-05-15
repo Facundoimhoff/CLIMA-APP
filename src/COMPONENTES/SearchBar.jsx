@@ -41,7 +41,7 @@ export default function SearchBar() {
 
     <div className="card">
 
-      <h1>🌤️ Aplicación del Clima</h1>
+      <h1> Aplicación del Clima</h1>
 
       <p>Buscá una ciudad</p>
 
