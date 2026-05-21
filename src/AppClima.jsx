@@ -9,7 +9,7 @@ import WeatherDetail from "./COMPONENTES/WeatherDetail"
 
 function AppClima() {
 
-  return (
+  return (  
 
     <BrowserRouter> //Componente para habilitar el enrutamiento
 

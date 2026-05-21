@@ -95,3 +95,24 @@ button:hover {
   }
 
 }
+
+.spinner2 {
+  width: 70px;
+  height: 70px;
+  border: 8px solid #ffffff50;
+  border-top: 8px solid white;
+  border-radius: 50%;
+  animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+
+}

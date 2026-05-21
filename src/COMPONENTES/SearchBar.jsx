@@ -9,9 +9,13 @@ export default function SearchBar() {
 
   const [ciudad, setCiudad] = useState("")
 
+  const [loading, setLoading] = useState(false)
+
   const navigate = useNavigate()
 
   const buscarCiudad = async () => {
+
+    setLoading(true)
 
     if (ciudad.trim() === "") {
       alert("Ingrese una ciudad")
@@ -29,6 +33,8 @@ export default function SearchBar() {
         }
       })
 
+      setLoading(false)
+
     } catch (error) {
 
       console.log(error)
@@ -38,6 +44,22 @@ export default function SearchBar() {
     }
   }
 
+  if (loading) {
+
+  return (
+
+    <div className="loadingContainer2">
+
+      <div className="spinner2"></div>
+
+      <h2>Buscando ciudades...</h2>
+
+    </div>
+
+  )
+
+}
+ 
   return (
 
     <div className="card">
