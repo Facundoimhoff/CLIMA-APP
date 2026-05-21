@@ -1,5 +1,6 @@
 import React from "react"
 
+//Se usa react-router-dom para manejar las rutas de la aplicación
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import SearchBar from "./COMPONENTES/SearchBar"
@@ -10,24 +11,25 @@ function AppClima() {
 
   return (
 
-    <BrowserRouter>
+    <BrowserRouter> //Componente para habilitar el enrutamiento
 
       <div className="container">
 
-        <Routes>
+        <Routes> //Definimos las rutas de la aplicación, que son: la página de búsqueda, la lista de ciudades y el detalle del clima
 
           <Route
-            path="/"
+            path="/" //Ruta principal, que muestra la barra de búsqueda
             element={<SearchBar />}
           />
 
           <Route
-            path="/cities"
+            path="/cities" //Ruta para la lista de ciudades, luego de buscar una ciudad
             element={<CityList />}
           />
 
           <Route
-            path="/weather/:lat/:lon"
+            path="/weather/:lat/:lon" //Ruta para el detalle del clima, con parámetros de latitud y longitud, luego de seleccionar una ciudad de la lista
+            
             element={<WeatherDetail />}
           />
 

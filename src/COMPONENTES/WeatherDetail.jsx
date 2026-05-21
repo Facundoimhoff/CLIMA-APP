@@ -6,9 +6,11 @@ import { useParams, useNavigate } from "react-router-dom"
 
 import WeatherCard from "./WeatherCard"
 
+
+// Componente que muestra el detalle del clima para una ciudad seleccionada, incluyendo la temperatura actual, humedad, sensación térmica y un pronóstico de 7 días. Utiliza la API de Open-Meteo para obtener los datos climáticos basados en la latitud y longitud de la ciudad seleccionada.
 export default function WeatherDetail() {
 
-  const { lat, lon } = useParams()
+  const { lat, lon } = useParams() // Se obtienen los parámetros de latitud y longitud de la URL, que se pasan desde la lista de ciudades al seleccionar una ciudad para ver su clima
 
   const navigate = useNavigate()
 
@@ -24,7 +26,7 @@ export default function WeatherDetail() {
 
   }, [lat, lon])
 
-  const obtenerClima = async () => {
+  const obtenerClima = async () => { // Función para obtener el clima desde la API de Open-Meteo, utilizando la latitud y longitud obtenidas de los parámetros de la URL. Maneja el estado de carga y errores durante la solicitud.
 
     try {
 
@@ -51,8 +53,7 @@ export default function WeatherDetail() {
     }
   }
 
-  const obtenerIconoClima = (codigo) => {
-
+  const obtenerIconoClima = (codigo) => { // Función para obtener un ícono y descripción del clima basado en el código de clima proporcionado por la API.
     codigo = Number(codigo)
 
     if (codigo === 0) {
@@ -103,7 +104,7 @@ export default function WeatherDetail() {
 
   }
 
-  const obtenerEmojiSensacion = (temperatura) => {
+  const obtenerEmojiSensacion = (temperatura) => { // Función para obtener un emoji que representa la sensación térmica basada en la temperatura.
 
     if (temperatura >= 30) return "🥵"
 
@@ -115,19 +116,28 @@ export default function WeatherDetail() {
 
   }
 
-  if (loading) {
+  if (loading) { // Si el estado de carga es verdadero, se muestra un mensaje de carga y un spinner mientras se obtienen los datos del clima.
 
-    return <h2>Cargando...</h2>
+  return (
 
-  }
+    <div className="loadingContainer">
 
+      <div className="spinner"></div>
+
+      <h2>Cargando clima...</h2>
+
+    </div>
+
+  )
+
+}
   if (error) {
 
     return <h2>{error}</h2>
 
   }
 
-  return (
+  return ( // Si se obtuvieron los datos del clima correctamente, se muestra el detalle del clima actual y el pronóstico de 7 días utilizando el componente WeatherCard para cada día del pronóstico.
 
     <div className="card">
 

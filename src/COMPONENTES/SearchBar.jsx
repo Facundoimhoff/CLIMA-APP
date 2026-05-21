@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 
-import axios from "axios"
+import axios from "axios" 
 
 import { useNavigate } from "react-router-dom"
 
+//Guarda la ciudad ingresada por el usuario en el estado "ciudad" y tiene una función "buscarCiudad" que hace una solicitud a la API
 export default function SearchBar() {
 
   const [ciudad, setCiudad] = useState("")
@@ -22,7 +23,7 @@ export default function SearchBar() {
       const respuesta = await axios.get(`https://nominatim.openstreetmap.org/search?q=${ciudad}&format=json`
       )
 
-      navigate("/cities", {
+      navigate("/cities", { // Navega a la ruta de la lista de ciudades, pasando los resultados de la búsqueda en el estado
         state: {
           ciudades: respuesta.data
         }

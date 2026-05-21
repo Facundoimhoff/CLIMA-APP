@@ -65,3 +65,33 @@ button:hover {
   min-width: 120px;
   text-align: center;
 }
+
+.loadingContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.spinner {
+  width: 70px;
+  height: 70px;
+  border: 8px solid #ffffff50;
+  border-top: 8px solid white;
+  border-radius: 50%;
+  animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+
+}
