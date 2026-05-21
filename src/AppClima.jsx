@@ -11,11 +11,11 @@ function AppClima() {
 
   return (  
 
-    <BrowserRouter> //Componente para habilitar el enrutamiento
+    <BrowserRouter> 
 
       <div className="container">
 
-        <Routes> //Definimos las rutas de la aplicación, que son: la página de búsqueda, la lista de ciudades y el detalle del clima
+        <Routes> 
 
           <Route
             path="/" //Ruta principal, que muestra la barra de búsqueda

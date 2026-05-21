@@ -48,9 +48,9 @@ export default function SearchBar() {
 
   return (
 
-    <div className="loadingContainer2">
+    <div className="loadingContainer">
 
-      <div className="spinner2"></div>
+      <div className="spinner"></div>
 
       <h2>Buscando ciudades...</h2>
 
